@@ -94,7 +94,6 @@ let keyChange = {
         }
     ]
 }
-// console.log(keyChange.keyboardKeys);
 //////////////////////////////////////TOGGLE NUMPAD/KEYBOARD////////////////////////////////////
 function toggleKey(e) {
     var toggle = document.querySelector('.switch-input[type="checkbox"]');
@@ -114,9 +113,10 @@ function toggleKey(e) {
             });
         }
     });
-    // console.log(toggle);
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////END OF TOGGLE NUMPAD/KEYBOAD/////////////////////////////////
+
+///////// \/\/\/\/\/\/\/ /////////LINKS KEYCODE WITH AUDIO BIT/////// \/\/\/\/\/\/\/ /////////////
 function playSound(e) {
     const audio = document.querySelector(`audio[keyboard-key = "${e.keyCode}"]`);
     const key = document.querySelector(`.key[keyboard-key = "${e.keyCode}"]`);
@@ -125,7 +125,7 @@ function playSound(e) {
     key.classList.add('playing');
     audio.play();
 };
-
+/////////////////////////////////Removes animation after key is pressed///////////////////////////
 function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
     this.classList.remove('playing');
@@ -133,7 +133,7 @@ function removeTransition(e) {
 
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
+////////////Plays key based on which side the toggle is on////////////////////////////////////////
 window.addEventListener('click', toggleKey);
 window.addEventListener('keydown', playSound);
 
